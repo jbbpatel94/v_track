@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
@@ -19,3 +20,20 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+=======
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+
+#package-lock
+package-lock.json
+
+>>>>>>> 66b1d16b2b46bbab47c6f7d954bd23acd7ac34ba
