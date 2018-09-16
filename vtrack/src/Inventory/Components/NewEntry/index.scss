@@ -1,0 +1,30 @@
+.text-box-container{
+    display: flex;
+    width: 100%;
+}
+.text-field-flex{
+    flex :1;
+}
+
+.MuiFormControl-root-0199{
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    display: inline-flex !important;
+    padding: 0 !important;
+    position: relative !important;
+    min-width: 0 !important;
+    flex-direction: column !important;
+}
+#formControl{
+    width: 100%;
+}
+.m-r-20 {
+    margin-right: 20px;
+}
+// .MuiGrid-container-03 .MuiGrid-item-04 .MuiGrid-grid-xs-12-043{
+//     text-align: center !important;
+//     display: flex !important;
+//     justify-content: center !important;
+
+// }
