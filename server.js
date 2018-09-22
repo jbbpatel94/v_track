@@ -5,6 +5,7 @@ const passport = require('passport');
 
 const users = require('./routes/api/users');
 const vehicles = require('./routes/api/inventory');
+const yards = require('./routes/api/yard');
 
 const app = express();
 
@@ -30,6 +31,7 @@ require('./config/passport')(passport);
 // Use Routes
 app.use('/api/users', users);
 app.use('/api/vehicles/inventory', vehicles);
+app.use('/api/vehicles/yard', yards);
 
 const port = process.env.PORT || 5000;
 

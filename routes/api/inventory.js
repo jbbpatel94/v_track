@@ -1,8 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
 const passport = require('passport');
 
 
@@ -11,7 +8,7 @@ const passport = require('passport');
 const Vehicle = require('../../models/Vehicle');
 const STAGES  = require('./constants').STAGES;
 
-// @route   GET api/Vehicle/test
+// @route   GET api/Vehicle/inventory/test
 // @desc    Tests Vehicle route
 // @access  Public
 router.get('/test', (req, res) => res.json({ msg: 'Vehicle Works' }));
@@ -40,12 +37,11 @@ router.post('/register', passport.authenticate('jwt', { session: false }), (req,
         inventory.stage = STAGES.STAGE_TRANSIT;
         inventory.createdAt = createdAt;
         inventory.tmlInvoiceNo = req.body.tmlInvoiceNo;
-        inventory.modalNo = req.body.modalNo;
         inventory.engineNo = req.body.engineNo;
 
         inventory.changedBy = {
-          userId: req.body.userId,
-          name: req.body.userName 
+          userId: req.user.id,
+          name: req.user.name 
         };
 
         inventory.pricing = {
@@ -62,6 +58,7 @@ router.post('/register', passport.authenticate('jwt', { session: false }), (req,
         vehicle.chassisNo = req.body.chassisNo;
         vehicle.segment = req.body.segment;
         vehicle.cStage = STAGES.STAGE_TRANSIT;
+        vehicle.modelNo = req.body.modelNo;
         vehicle.inventory = inventory;
         vehicle.createdA = createdAt;
         vehicle.updatedAt = createdAt;
