@@ -8,29 +8,80 @@ const VehicleSchema = new Schema({
     required: true,
     unique: true
   },
+  segment: {
+    type: String,
+    required: true,
+  },
   cStage: {
     type: String,
     required: true
   },
-  stages: [{
-      name: {
-        type: String,
-        required: true
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now
-      }
-            // changedBy: {
-      //   type: mongoose.Schema.Types.ObjectId, 
+  inventory: {
+    type: Schema.Types.Mixed
+    
+      // createdAt: {
+      //   type: Date,
+      //   default: Date.now
+      // },
+      // tmlInvoiceNo: {
+      //   type: String,
+      //   required: true,
+      // },
+      // modalNo: {
+      //   type: String,
+      //   required: true,
+      // },
+      // engineNo: {
+      //   type: String,
+      //   required: true,
+      // },
+      // state: {
+      //   type: String,
+      //   required: true,
+      // },
+      // changedBy: {
+      //   type: mongoose.Schema.Types.ObjectId,
       //   ref: 'User' 
       // }
-
-  }]
-
+      // pricing: {
+      //   unitPrice: {
+      //     type: String,
+      //     required: true,
+      //   },
+      //   RDC: {
+      //     type: String,
+      //     required: true,
+      //   },
+      //   CGST: {
+      //     type: String,
+      //     required: true,
+      //   },
+      //   IGST:{
+      //     type: String,
+      //     required: true,
+      //   },
+      //   SGST: {
+      //     type: String,
+      //     required: true,
+      //   },
+      //   CESS: {
+      //     type: String,
+      //     required: true,
+      //   },
+      //   invoiceValue: {
+      //     type: String,
+      //     required: true,
+      //   }
+      // }
+    },
+    yard: {
+      type: Schema.Types.Mixed
+    },
+    createdAt: Date,
+    updatedAt: Date
   },
   {
-    timestamps: true
+    strict: false
   }
 );
 
