@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import FlateButton from '@material-ui/core/Button';
+import {inventoryPostRquest} from '../../../helper';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 
 const styles = theme => ({
@@ -97,22 +98,61 @@ class NewEntry extends Component {
 
         this.state = {
             states: "Rajasthan",
-            segement: "Buses"
+            date:"",
+            segement: "Buses",
+            TMLInvoiceNo :"",
+            modelNo :"",
+            chasisNo:"",
+            engineNo:"",
+            purchasedRate:"",
+            unitPriceofModel:"",
+            cess:"",
+            RDC:"",
+            CGST:"",
+            IGST:"",
+            SGST:"",
+            total:""
         }
-        debugger;
+        
     }
     handleChange = (event, field) => {
-        debugger;
         this.setState({
             [field]: event.target.value,
         });
     };
+    handleFieldChange = prop => event => {
+        this.setState({ [prop]: event.target.value });
+      };
+    submitNewEntry = (e)=>{
+        e.preventDefault();
+        let obj = {
+            "TMLInvoiceNo":this.state.TMLInvoiceNo,
+            "date":this.state.date,
+            "segement":this.state.segement,
+            "modelNo":this.state.modelNo,
+            "chasisNo":this.state.chasisNo,
+            "engineNo":this.state.engineNo,
+            "purchasedRate":this.state.purchasedRate,
+            "state":this.state.states,
+            "unitPriceofModel":this.state.unitPriceofModel,
+            "cess":this.state.cess,
+            "RDC":this.state.RDC,
+            "CGST":this.state.CGST,
+            "IGST":this.state.IGST,
+            "SGST":this.state.SGST,
+            "total":this.state.total
+        }
+        debugger;
+        console.log(obj);
+        inventoryPostRquest(obj);
+    }
     render() {
+        inventoryPostRquest();
         const { classes } = this.props;
         return (
             <Grid container item xs={12}>
                 <FormControl className={classes.container}  >
-                    <form autoComplete="off">
+                    <form onSubmit ={this.submitNewEntry} autoComplete="off">
 
                         <div className={classes.textBoxRow}>
                             <TextField
@@ -121,6 +161,8 @@ class NewEntry extends Component {
                                 className={classes.textFieldSpace}
                                 id="TMLInvoiceNo"
                                 label="TML Invoice No"
+                                value = {this.state.TMLInvoiceNo}
+                                onChange={this.handleFieldChange('TMLInvoiceNo')}
                                 margin="normal"
                                 autoFocus
                             />
@@ -132,6 +174,8 @@ class NewEntry extends Component {
                                 label="Date"
                                 type="date"
                                 //defaultValue="2017-05-24"
+                                value = {this.state.date}
+                                onChange={this.handleFieldChange('date')}
                                 className={classes.textField}
                                 InputLabelProps={{
                                     shrink: true,
@@ -164,21 +208,27 @@ class NewEntry extends Component {
                         <div className={classes.textBoxRow}>
                             <TextField
                                 required
-                                id="ModelNo"
+                                id="modelNo"
+                                value = {this.state.modelNo}
+                                onChange={this.handleFieldChange('modelNo')}
                                 className={classes.textFieldSpace}
                                 label="Model No"
                                 margin="normal"
                             />
                             <TextField
                                 required
-                                id="ChasisNo"
+                                id="chasisNo"
+                                value = {this.state.chasisNo}
+                                onChange={this.handleFieldChange('chasisNo')}
                                 className={classes.textFieldSpace}
                                 label="Chasis No"
                                 margin="normal"
                             />
                             <TextField
                                 required
-                                id="EngineNo"
+                                id="engineNo"
+                                value = {this.state.engineNo}
+                                onChange={this.handleFieldChange('engineNo')}
                                 className={classes.textFieldSpace}
                                 label="Engine No"
                                 margin="normal"
@@ -188,7 +238,9 @@ class NewEntry extends Component {
                             <TextField
                                 required
                                 className={classes.textFieldSpace}
-                                id="PurchasedRate"
+                                id="purchasedRate"
+                                value = {this.state.purchasedRate}
+                                onChange={this.handleFieldChange('purchasedRate')}
                                 label="Purchased Rate"
                                 margin="normal"
                             />
@@ -216,7 +268,9 @@ class NewEntry extends Component {
                             <TextField
                                 required
                                 className={classes.textFieldSpace}
-                                id="UnitPriceofModel"
+                                id="unitPriceofModel"
+                                value = {this.state.unitPriceofModel}
+                                onChange={this.handleFieldChange('unitPriceofModel')}
                                 label="Unit Price of Model"
                                 margin="normal"
                             />
@@ -226,6 +280,8 @@ class NewEntry extends Component {
                                 required
                                 className={classes.textFieldSpace}
                                 id="RDC"
+                                value = {this.state.RDC}
+                                onChange={this.handleFieldChange('RDC')}
                                 label="RDC"
                                 margin="normal"
                             />
@@ -233,6 +289,8 @@ class NewEntry extends Component {
                                 required
                                 className={classes.textFieldSpace}
                                 id="CGST"
+                                value = {this.state.CGST}
+                                onChange={this.handleFieldChange('CGST')}
                                 label="CGST"
                                 margin="normal"
                             />
@@ -240,6 +298,8 @@ class NewEntry extends Component {
                                 required
                                 className={classes.textFieldSpace}
                                 id="IGST"
+                                value = {this.state.IGST}
+                                onChange={this.handleFieldChange('IGST')}
                                 label="IGST"
                                 margin="normal"
                             />
@@ -249,20 +309,26 @@ class NewEntry extends Component {
                                 required
                                 className={classes.textFieldSpace}
                                 id="SGST"
+                                value = {this.state.SGST}
+                                onChange={this.handleFieldChange('SGST')}
                                 label="SGST"
                                 margin="normal"
                             />
                             <TextField
                                 required
                                 className={classes.textFieldSpace}
-                                id="Cess"
+                                id="cess"
+                                value = {this.state.cess}
+                                onChange={this.handleFieldChange('cess')}
                                 label="Cess"
                                 margin="normal"
                             />
                             <TextField
                                 required
                                 className={classes.textFieldSpace}
-                                id="Total GST(CGST+IGST+SGST)"
+                                id="total"
+                                value = {this.state.total}
+                                onChange={this.handleFieldChange('total')}
                                 label="TotalGST(CGST+IGST+SGST)"
                                 margin="normal"
                             />

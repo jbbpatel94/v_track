@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import {loginPostRquest} from '.././helper.js'
 
 const styles = theme => ({
   layout: {
@@ -50,6 +51,7 @@ class SignIn extends React.Component {
     super(props);
     this.state = {
       amount: '',
+      email:'',
       password: '',
       weight: '',
       weightRange: '',
@@ -67,6 +69,10 @@ class SignIn extends React.Component {
   handleChange = prop => event => {
     this.setState({ [prop]: event.target.value });
   };
+  login = (e)=>{
+    e.preventDefault();
+    loginPostRquest(this.state.email,this.state.password);
+  }
   render() {
     const { classes } = this.props;
 
@@ -79,10 +85,10 @@ class SignIn extends React.Component {
               <LockIcon />
             </Avatar>
             <Typography variant="headline">Sign in</Typography>
-            <form className={classes.form}>
+            <form onSubmit={this.login} className={classes.form}>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="email">Email Address</InputLabel>
-                <Input id="email" name="email" autoComplete="email" autoFocus />
+                <Input id="email" value={this.state.email} onChange={this.handleChange('email')} name="email" autoComplete="email" autoFocus />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="password">Password</InputLabel>

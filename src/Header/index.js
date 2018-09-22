@@ -18,6 +18,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link, NavLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import {getCurrentUser} from '../helper';
+
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -114,7 +117,11 @@ class PrimarySearchAppBar extends React.Component {
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
-
+  componentDidMount(){
+    getCurrentUser().then(data=>{
+      data.json
+    })
+  }
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
@@ -216,6 +223,8 @@ class PrimarySearchAppBar extends React.Component {
                   <NotificationsIcon />
                 </Badge>
               </IconButton> */}
+              
+              <p>{getCurrentUser && getCurrentUser.name}</p>
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : null}
                 aria-haspopup="true"
