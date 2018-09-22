@@ -74,7 +74,7 @@ const VehicleSchema = new Schema({
       //   }
       // }
     },
-    yard: {
+    yardDetails: {
       type: Schema.Types.Mixed
     },
     createdAt: Date,

@@ -63,8 +63,7 @@ router.post('/register', passport.authenticate('jwt', { session: false }), (req,
         vehicle.segment = req.body.segment;
         vehicle.cStage = STAGES.STAGE_TRANSIT;
         vehicle.inventory = inventory;
-        vehicle.createdA = createdAt;
-        vehicle.updatedAt = createdAt;
+        vehicle.createdAt = createdAt;
         vehicle.updatedAt = createdAt;
 
         vehicle.save()
